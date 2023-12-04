@@ -29,3 +29,22 @@ export async function getImages() {
     return [];
   });
 }
+
+export async function addMessage({ name, message, password }) {
+  const id = uuid();
+  return set(ref(database, `messages/${id}`), {
+    name,
+    message,
+    password,
+    id,
+  });
+}
+
+export async function getMessages() {
+  return get(ref(database, "messages")).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    }
+    return [];
+  });
+}

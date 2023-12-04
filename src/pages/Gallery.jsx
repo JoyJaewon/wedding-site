@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getImages } from "../api/firebase";
-import ImageCard from "./ImageCard";
+import ImageCard from "../components/ImageCard";
 
 export default function Gallery() {
   const {
