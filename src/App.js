@@ -6,6 +6,7 @@ import OurStory from "./pages/OurStory";
 import Gallery from "./pages/Gallery";
 import GuestBook from "./pages/GuestBook";
 import RSVP from "./pages/RSVP";
+import Upload from "./pages/Upload";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/rsvp",
         element: <RSVP />,
+      },
+      {
+        path: "/upload",
+        element: <Upload />,
       },
     ],
   },

@@ -11,6 +11,7 @@ export default function Navbar() {
         <Link to="/gallery">Gallery</Link>
         <Link to="/guest-book">Guest Book</Link>
         <Link to="/rsvp">RSVP</Link>
+        <Link to="/upload">Upload</Link>
       </nav>
     </header>
   );
