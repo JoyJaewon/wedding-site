@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "~react-image-gallery/styles/css/image-gallery.css";
 
 body {
   @apply pt-14;
@@ -24,4 +25,23 @@ code {
 
 input {
   @apply p-4 outline-none border border-gray-300 my-1;
+}
+
+.gallery-container {
+  display: grid !important;
+  grid-gap: 1rem !important;
+  padding: 1rem !important;
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+@media (min-width: 768px) {
+  .gallery-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-container {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
 }

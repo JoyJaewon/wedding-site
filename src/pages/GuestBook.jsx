@@ -7,9 +7,16 @@ import MessageCard from "../components/MessageCard";
 export default function GuestBook() {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
-  const [password, setPassword] = useState(""); // Add a state for the password
+  const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState();
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => setShowModal(true);
+  const closeModal = () => {
+    setShowModal(false);
+    window.location.reload();
+  };
 
   const {
     isLoading,
@@ -27,21 +34,15 @@ export default function GuestBook() {
     } else if (name === "message") {
       setMessage(value);
     } else if (name === "password") {
-      setPassword(value); // Handle password input changes
+      setPassword(value);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Here you would add your logic to handle the password,
-    // for now we'll just log the inputs to the console
     console.log(name, message, password);
-    // TODO: Implement password validation logic here
-
-    // Simulate message submission
-    addMessage({ name, message, password }) // This function should handle the Firebase logic
+    addMessage({ name, message, password })
       .then(() => {
         setSuccess("Message submitted successfully");
         setTimeout(() => {
@@ -58,47 +59,62 @@ export default function GuestBook() {
   return (
     <>
       <section className="w-full text-center">
-        <h2 className="text-2xl font-bold my-4">방명록</h2>
-        {success && <p className="my-2">✅ {success}</p>}
-        <form className="flex flex-col px-12" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            placeholder="이름"
-            required
-            onChange={handleChange}
-          />
-          <input
-            type="password" // Set the input type to password for the password field
-            name="password"
-            value={password}
-            placeholder="비밀번호" // Placeholder text in Korean for 'Password'
-            required
-            onChange={handleChange}
-          />
-          <textarea
-            name="message"
-            value={message}
-            placeholder="메세지"
-            required
-            onChange={handleChange}
-            className="mt-2 p-2" // Add some styling to the textarea
-          />
-          <Button
-            text={isSubmitting ? "업로드중..." : "메세지 업로드"}
-            disabled={isSubmitting}
-          />
-        </form>
+        <h2 className="text-2xl font-bold my-2 mt-10">방명록</h2>
+        <div>"남겨주신 글은 오래도록 마음에 간직하겠습니다"</div>
+        {isLoading && <p>Loading...</p>}
+        {error && <p>Error: {error.message}</p>}
+        <ul className="grid grid-cols-1 md:grid-cols-3 lg-grid-cols-4 gap-4 p-4">
+          {messages &&
+            messages.map((message) => (
+              <MessageCard key={message.id} message={message} />
+            ))}
+        </ul>
+
+        <Button text="Add Message" onClick={openModal} />
       </section>
-      {isLoading && <p>Loading...</p>}
-      {error && <p>Error: {error.message}</p>}
-      <ul className="grid grid-cols-1 md:grid-cols-3 lg-grid-cols-4 gap-4 p-4">
-        {messages &&
-          messages.map((message) => (
-            <MessageCard key={message.id} message={message} />
-          ))}
-      </ul>
+      {showModal && (
+        <div className="modal-backdrop">
+          <div className="modal">
+            <button className="modal-close" onClick={closeModal}>
+              X
+            </button>
+            <section className="w-full text-center">
+              <h5 className="text-2xl font-bold my-4">메세지 남기기</h5>
+              {success && <p className="my-2">✅ {success}</p>}
+              <form className="flex flex-col px-12" onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  name="name"
+                  value={name}
+                  placeholder="이름"
+                  required
+                  onChange={handleChange}
+                />
+                <input
+                  type="password" // Set the input type to password for the password field
+                  name="password"
+                  value={password}
+                  placeholder="비밀번호" // Placeholder text in Korean for 'Password'
+                  required
+                  onChange={handleChange}
+                />
+                <textarea
+                  name="message"
+                  value={message}
+                  placeholder="메세지"
+                  required
+                  onChange={handleChange}
+                  className="mt-2 p-2" // Add some styling to the textarea
+                />
+                <Button
+                  text={isSubmitting ? "업로드중..." : "메세지 업로드"}
+                  disabled={isSubmitting}
+                />
+              </form>
+            </section>
+          </div>
+        </div>
+      )}
     </>
   );
 }
