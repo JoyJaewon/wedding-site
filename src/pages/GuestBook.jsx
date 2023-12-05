@@ -1,22 +1,12 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 import Button from "../components/ui/Button";
 import { addMessage, getMessages } from "../api/firebase";
 import MessageCard from "../components/MessageCard";
 
 export default function GuestBook() {
-  const [name, setName] = useState("");
-  const [message, setMessage] = useState("");
-  const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [success, setSuccess] = useState();
-  const [showModal, setShowModal] = useState(false);
-
-  const openModal = () => setShowModal(true);
-  const closeModal = () => {
-    setShowModal(false);
-    window.location.reload();
-  };
 
   const {
     isLoading,
@@ -27,31 +17,44 @@ export default function GuestBook() {
     queryFn: getMessages,
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "name") {
-      setName(value);
-    } else if (name === "message") {
-      setMessage(value);
-    } else if (name === "password") {
-      setPassword(value);
-    }
+  const openModal = () => {
+    Swal.fire({
+      title: "메세지 남기기",
+      html: `
+        <input id="swal-input1" class="swal2-input" placeholder="이름" type="text">
+        <input id="swal-input2" class="swal2-input" placeholder="비밀번호" type="password">
+        <textarea id="swal-input3" class="swal2-textarea" placeholder="메세지"></textarea>
+      `,
+      confirmButtonText: "메세지 업로드",
+      focusConfirm: false,
+      preConfirm: () => {
+        const name = document.getElementById("swal-input1").value;
+        const password = document.getElementById("swal-input2").value;
+        const message = document.getElementById("swal-input3").value;
+        return { name, password, message };
+      },
+    }).then((result) => {
+      if (result.value) {
+        handleSubmit(result.value);
+      }
+    });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = ({ name, message, password }) => {
     setIsSubmitting(true);
-    console.log(name, message, password);
     addMessage({ name, message, password })
       .then(() => {
-        setSuccess("Message submitted successfully");
-        setTimeout(() => {
-          setSuccess(null);
-        }, 4000);
+        Swal.fire({
+          title: "Success",
+          text: "Message submitted successfully",
+          icon: "success",
+        }).then(() => {
+          window.location.reload(); // Refresh the page
+        });
       })
       .catch((error) => {
         console.error("Failed to submit message:", error);
-        setSuccess("Failed to submit message");
+        Swal.fire("Error", "Failed to submit message", "error");
       })
       .finally(() => setIsSubmitting(false));
   };
@@ -72,49 +75,6 @@ export default function GuestBook() {
 
         <Button text="Add Message" onClick={openModal} />
       </section>
-      {showModal && (
-        <div className="modal-backdrop">
-          <div className="modal">
-            <button className="modal-close" onClick={closeModal}>
-              X
-            </button>
-            <section className="w-full text-center">
-              <h5 className="text-2xl font-bold my-4">메세지 남기기</h5>
-              {success && <p className="my-2">✅ {success}</p>}
-              <form className="flex flex-col px-12" onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  name="name"
-                  value={name}
-                  placeholder="이름"
-                  required
-                  onChange={handleChange}
-                />
-                <input
-                  type="password" // Set the input type to password for the password field
-                  name="password"
-                  value={password}
-                  placeholder="비밀번호" // Placeholder text in Korean for 'Password'
-                  required
-                  onChange={handleChange}
-                />
-                <textarea
-                  name="message"
-                  value={message}
-                  placeholder="메세지"
-                  required
-                  onChange={handleChange}
-                  className="mt-2 p-2" // Add some styling to the textarea
-                />
-                <Button
-                  text={isSubmitting ? "업로드중..." : "메세지 업로드"}
-                  disabled={isSubmitting}
-                />
-              </form>
-            </section>
-          </div>
-        </div>
-      )}
     </>
   );
 }

@@ -33,13 +33,15 @@ export default function CountDown() {
 
   const timerComponents = Object.keys(timeLeft).map((interval) => (
     <div
-      className="flex flex-col items-center justify-center p-4"
+      className="flex flex-col items-center justify-center md:p-4 p-2"
       key={interval}
     >
-      <span className="text-6xl font-semibold">
+      <span className="lg:text-6xl text-3xl font-semibold">
         {timeLeft[interval].toString().padStart(2, "0")}
       </span>
-      <span className="text-lg font-semibold uppercase">{interval}</span>
+      <span className=" md:text-lg font-semibold uppercase text-base">
+        {interval}
+      </span>
     </div>
   ));
 
