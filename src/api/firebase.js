@@ -24,7 +24,15 @@ export async function addNewImage(image, title) {
 export async function getImages() {
   return get(ref(database, "gallery")).then((snapshot) => {
     if (snapshot.exists()) {
-      return Object.values(snapshot.val());
+      const images = Object.values(snapshot.val());
+      const updatedImages = images.map((image) => {
+        if (image.image.startsWith("http://")) {
+          image.image = image.image.replace(/^http:/, "https:");
+        }
+        return image;
+      });
+
+      return updatedImages;
     }
     return [];
   });
