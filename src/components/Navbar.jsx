@@ -26,9 +26,6 @@ export default function Navbar() {
           <Link to="/" className="hover:text-gray-300">
             Home
           </Link>
-          <Link to="/our-story" className="hover:text-gray-300">
-            Our Story
-          </Link>
           <Link to="/gallery" className="hover:text-gray-300">
             Gallery
           </Link>

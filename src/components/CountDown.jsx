@@ -46,8 +46,8 @@ export default function CountDown() {
   ));
 
   return (
-    <div className="flex flex-col items-center justify-center p-4 mt-5">
-      <div className="text-center mt-16 text-lg">
+    <div className="flex flex-col items-center justify-center mt-5">
+      <div className="text-center mt-16 text-lg p-4">
         <h5>서로가 마주보며 다져온 사랑을</h5>
         <h5>이제 함께 한 곳을 바라보며 걸어갈 수 있는</h5>
         <h5>큰 사랑으로 키우고자 합니다.</h5>
@@ -58,16 +58,26 @@ export default function CountDown() {
         <img
           src="/images/groom.jpg"
           alt="Junyong"
-          className="rounded-full lg:w-1/5 w-1/4 h-1/4"
+          className="rounded-full lg:w-1/5 w-1/4 h-1/4 shadow-lg cursor-pointer transition-all hover:scale-105"
         />
         <img
           src="/images/bride.jpg"
           alt="Jaewon"
-          className="rounded-full lg:w-1/5 w-1/4 h-1/4"
+          className="rounded-full lg:w-1/5 w-1/4 h-1/4 shadow-lg cursor-pointer transition-all hover:scale-105"
         />
       </div>
+      <div className="flex lg:justify-around justify-between mt-10 lg:w-2/3 w-3/6">
+        <div className="text-center">
+          <div className="text-2xl font-semibold">신랑</div>
+          <div className="text-lg">김준용</div>
+        </div>
+        <div className="text-center">
+          <div className="text-2xl font-semibold">신부</div>
+          <div className="text-lg">한재원</div>
+        </div>{" "}
+      </div>
       <h1 className="text-2xl font-semibold mb-4 mt-16">January 13th, 2024</h1>
-      <div className="flex items-center space-x-4">{timerComponents}</div>
+      <div className="flex items-center space-x-4 mb-10">{timerComponents}</div>
     </div>
   );
 }
