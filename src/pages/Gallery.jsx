@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getImages } from "../api/firebase";
 import LightGallery from "lightgallery/react";
-import "lightgallery/css/lightgallery.css"; // Import LightGallery CSS
+import "lightgallery/css/lightgallery.css";
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
 import "lightgallery/css/lg-thumbnail.css";
@@ -36,11 +36,11 @@ export default function Gallery() {
             key={image.id}
             className="block overflow-hidden rounded-lg shadow-md cursor-pointer transition-all hover:scale-105"
             data-src={image.image}
-            href={image.image} // The href attribute is required for LightGallery
+            href={image.image}
             data-sub-html={`<h4>${image.title}</h4>`}
           >
             <img
-              className="w-full h-auto object-cover"
+              className="w-full h-full object-cover"
               src={image.image}
               alt={image.title}
             />
