@@ -21,6 +21,8 @@ export default function Gallery() {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
+  const licenseKey = process.env.REACT_APP_LIGHTGALLERY_LICENSE_KEY;
+
   return (
     <div className="w-full text-center">
       <h2 className="text-2xl font-bold my-2 mt-10">갤러리</h2>
@@ -30,6 +32,7 @@ export default function Gallery() {
         mode="lg-fade"
         speed={500}
         elementClassNames="gallery-masonry"
+        licenseKey={licenseKey}
       >
         {images.map((image) => (
           <a
