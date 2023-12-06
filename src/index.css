@@ -45,3 +45,28 @@ input {
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   }
 }
+
+.gallery-masonry {
+  column-count: 3;
+  column-gap: 1rem;
+}
+
+.gallery-masonry img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 1rem;
+  break-inside: avoid;
+}
+
+@media (max-width: 1023px) {
+  .gallery-masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 767px) {
+  .gallery-masonry {
+    column-count: 1;
+  }
+}

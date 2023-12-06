@@ -29,18 +29,18 @@ export default function Gallery() {
         plugins={[lgThumbnail, lgZoom]}
         mode="lg-fade"
         speed={500}
-        elementClassNames="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+        elementClassNames="gallery-masonry"
       >
         {images.map((image) => (
           <a
             key={image.id}
-            className="block overflow-hidden rounded-lg shadow-md cursor-pointer transition-all hover:scale-105"
+            className="gallery-item"
             data-src={image.image}
             href={image.image}
             data-sub-html={`<h4>${image.title}</h4>`}
           >
             <img
-              className="w-full h-full object-cover"
+              className="gallery-image"
               src={image.image}
               alt={image.title}
             />
