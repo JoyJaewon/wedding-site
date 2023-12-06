@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
-import OurStory from "./pages/OurStory";
+//import OurStory from "./pages/OurStory";
 import Gallery from "./pages/Gallery";
 import GuestBook from "./pages/GuestBook";
 import RSVP from "./pages/RSVP";
