@@ -1,4 +1,5 @@
 import React from "react";
+import RsvpForm from "../components/RsvpForm";
 
 export default function RSVP() {
   return (
@@ -31,6 +32,7 @@ export default function RSVP() {
           </div>
         </div>
       </section>
+      <RsvpForm />
     </>
   );
 }

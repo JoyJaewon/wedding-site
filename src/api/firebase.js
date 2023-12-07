@@ -64,3 +64,14 @@ export async function getMessages() {
     return [];
   });
 }
+
+export async function addRsvp(rsvpData) {
+  const id = uuid();
+  const timestamp = new Date().toISOString();
+
+  return set(ref(database, `rsvps/${id}`), {
+    ...rsvpData,
+    id,
+    submittedAt: timestamp,
+  });
+}
