@@ -32,6 +32,16 @@ export default function CountDown() {
     }, 1000);
     return () => clearTimeout(timer);
   });
+  const [brideImage, setBrideImage] = useState("/images/bride.jpg"); 
+  const [groomImage, setGroomImage] = useState("/images/groom.jpg");
+
+
+  const changeBrideImage = () => {
+    setBrideImage(brideImage === "/images/bride.jpg" ? "/images/jaewon-child3.jpg" : "/images/bride.jpg");
+  };
+  const changeGroomImage = () => {
+    setGroomImage(groomImage === "/images/groom.jpg" ? "" : "/images/groom.jpg");
+  };
 
   const timerComponents = Object.keys(timeLeft).map((interval) => (
     <div
@@ -58,13 +68,15 @@ export default function CountDown() {
       </div>
       <div className="flex justify-center gap-28 lg:gap-52 mt-16">
         <img
-          src="/images/groom.jpg"
+          src={groomImage}
           alt="Junyong"
+         // onClick={changeGroomImage}
           className="rounded-full lg:w-1/5 w-1/4 h-1/4 shadow-lg cursor-pointer transition-all hover:scale-105"
         />
         <img
-          src="/images/bride.jpg"
+           src={brideImage}
           alt="Jaewon"
+          onClick={changeBrideImage}
           className="rounded-full lg:w-1/5 w-1/4 h-1/4 shadow-lg cursor-pointer transition-all hover:scale-105"
         />
       </div>
