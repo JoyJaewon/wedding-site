@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import LanguageToggle from "./LanguageToggle";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,6 +36,7 @@ export default function Navbar() {
           <Link to="/rsvp" className="hover:text-gray-300">
             RSVP
           </Link>
+          <LanguageToggle/>
         </nav>
       </div>
     </header>
