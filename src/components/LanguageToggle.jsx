@@ -14,7 +14,7 @@ export default function LanguageToggle() {
   return (
     <div>
       <button onClick={toggleLanguage}>
-        {currentLanguage === 'en' ? 'En' : 'Ko'}
+        {currentLanguage === 'en' ? 'Ko' : 'En'}
       </button>
     </div>
   );

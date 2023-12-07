@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LanguageToggle from "./LanguageToggle";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <header className="fixed top-0 left-0 w-full bg-black text-white z-10">
       <div className="flex flex-col sm:flex-row justify-between items-center p-4 max-w-6xl mx-auto">
         <div className="flex justify-between items-center w-full sm:w-auto">
           <div className="text-xl font-bold">
-            <Link to="/">Junyong & Jaewon</Link>
+            <Link to="/">{t("JunyongJaewon")}</Link>
           </div>
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -25,18 +27,20 @@ export default function Navbar() {
           } flex-col sm:flex sm:flex-row gap-4 items-center w-full sm:w-auto`}
         >
           <Link to="/" className="hover:text-gray-300">
-            Home
+            {t("Home")}
           </Link>
           <Link to="/gallery" className="hover:text-gray-300">
-            Gallery
+            {t("Gallery")}
           </Link>
           <Link to="/guest-book" className="hover:text-gray-300">
-            Guest Book
+            {t("GuestBook")}
           </Link>
           <Link to="/rsvp" className="hover:text-gray-300">
-            RSVP
+            {t("RSVP")}
           </Link>
-          <LanguageToggle/>
+          <div className="ps-10">
+            <LanguageToggle />
+          </div>
         </nav>
       </div>
     </header>
