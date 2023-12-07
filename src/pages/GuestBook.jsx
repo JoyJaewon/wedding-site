@@ -62,8 +62,8 @@ export default function GuestBook() {
   };
 
   return (
-    <>
-      <section className="w-full text-center">
+    <div className="w-full text-center px-3 lg:px-10">
+      <section>
         <h2 className="text-2xl font-bold my-2 mt-10">{t("GuestBook")}</h2>
         <div>"{t("guestbook-sub")}"</div>
         <div className="flex justify-end lg:pe-20 mt-3">
@@ -74,11 +74,12 @@ export default function GuestBook() {
         {error && <p>Error: {error.message}</p>}
         <ul className="grid grid-cols-1 md:grid-cols-3 lg-grid-cols-4 gap-4 p-4">
           {messages &&
-            messages.map((message) => (
-              <MessageCard key={message.id} message={message} />
-            ))}
+            messages.map((message) => {
+              const key = message.id || `message-${Math.random()}`;
+              return <MessageCard key={key} message={message} />;
+            })}
         </ul>
       </section>
-    </>
+    </div>
   );
 }

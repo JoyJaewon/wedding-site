@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { v4 as uuid } from "uuid";
-import { getDatabase, ref, set, get } from "firebase/database";
+import { getDatabase, ref, set, get, remove } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -48,11 +48,14 @@ export async function getVideo() {
 getVideo();
 export async function addMessage({ name, message, password }) {
   const id = uuid();
+  const timestamp = new Date().toISOString();
+
   return set(ref(database, `messages/${id}`), {
     name,
     message,
     password,
     id,
+    submittedAt: timestamp,
   });
 }
 
@@ -74,4 +77,13 @@ export async function addRsvp(rsvpData) {
     id,
     submittedAt: timestamp,
   });
+}
+
+export async function updateMessage(id, updatedData) {
+  return set(ref(database, `messages/${id}`), updatedData);
+}
+
+export async function deleteMessage(id) {
+  const dbRef = ref(database, `messages/${id}`);
+  return remove(dbRef);
 }

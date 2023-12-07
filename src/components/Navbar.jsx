@@ -9,8 +9,8 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 w-full bg-black text-white z-10">
-      <div className="flex flex-col sm:flex-row justify-between items-center p-4 max-w-6xl mx-auto">
-        <div className="flex justify-between items-center w-full sm:w-auto">
+      <div className="flex flex-col sm:flex-row justify-between  p-4 max-w-screen-2xl mx-auto">
+        <div className="flex justify-between items-center w-full sm:w-auto p">
           <div className="text-xl font-bold">
             <Link to="/">{t("JunyongJaewon")}</Link>
           </div>
