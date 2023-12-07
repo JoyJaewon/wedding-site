@@ -6,6 +6,7 @@ import { addMessage, getMessages } from "../api/firebase";
 import MessageCard from "../components/MessageCard";
 import { useTranslation } from "react-i18next";
 
+
 export default function GuestBook() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const {t}=useTranslation();
@@ -63,9 +64,8 @@ export default function GuestBook() {
   return (
     <>
       <section className="w-full text-center">
-        <h2 className="text-2xl font-bold my-2 mt-10">방명록</h2>
-        <h2>{t("Welcome")}</h2>        
-        <div>"남겨주신 글은 오래도록 마음에 간직하겠습니다"</div>
+        <h2 className="text-2xl font-bold my-2 mt-10">{t("GuestBook")}</h2>
+        <div>"{t("guestbook-sub")}"</div>
         <div className="flex justify-end lg:pe-20 mt-3">
           <Button text="Add Message" onClick={openModal} />
         </div>

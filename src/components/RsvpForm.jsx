@@ -1,8 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { addRsvp } from "../api/firebase";
+import { useTranslation } from "react-i18next";
 
 export default function RsvpForm() {
+  const { t } = useTranslation();
+
   const {
     register,
     handleSubmit,
@@ -29,7 +32,7 @@ export default function RsvpForm() {
           rel="noopener noreferrer"
           className="text-blue-500 hover:text-blue-700 text-sm font-bold"
         >
-          View Full Menu
+          {t("viewMenu")}
         </a>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -38,7 +41,7 @@ export default function RsvpForm() {
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="name"
           >
-            Name
+            {t("name")}
           </label>
           <input
             {...register("name", { required: true })}
@@ -57,7 +60,7 @@ export default function RsvpForm() {
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="soupSalad"
           >
-            Soup + Salad
+            {t("soup+salad")}
           </label>
           <select
             {...register("soupSalad", { required: true })}
@@ -81,7 +84,7 @@ export default function RsvpForm() {
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="entree"
           >
-            Entree
+             {t("Entree")}
           </label>
           <select
             {...register("entree", { required: true })}
@@ -106,7 +109,7 @@ export default function RsvpForm() {
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="dessert"
           >
-            Dessert
+            {t("Dessert")}
           </label>
           <select
             {...register("dessert", { required: true })}
@@ -134,7 +137,7 @@ export default function RsvpForm() {
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="notes"
           >
-            Notes
+            {t("Notes")}
           </label>
           <textarea
             {...register("notes")}
@@ -153,9 +156,9 @@ export default function RsvpForm() {
           </button>
         </div>
         <h5 className="text-center">
-          혹시라도 나중에 메뉴 변경을 원하신다면 Form 한번더 제출해주세요!{" "}
+          {t("rsvp-message1")}
           <br />
-          1월 13일에 뵙겠습니다❤️
+          {t("rsvp-message2")}
         </h5>
       </form>
     </div>
