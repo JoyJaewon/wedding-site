@@ -144,14 +144,19 @@ export default function RsvpForm() {
           />
         </div>
 
-        <div className="flex justify-between items-center">
+        <div className="flex justify-center">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Submit
           </button>
         </div>
+        <h5 className="text-center">
+          혹시라도 나중에 메뉴 변경을 원하신다면 Form 한번더 제출해주세요!{" "}
+          <br />
+          1월 13일에 뵙겠습니다❤️
+        </h5>
       </form>
     </div>
   );
