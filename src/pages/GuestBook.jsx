@@ -64,6 +64,10 @@ export default function GuestBook() {
       <section className="w-full text-center">
         <h2 className="text-2xl font-bold my-2 mt-10">방명록</h2>
         <div>"남겨주신 글은 오래도록 마음에 간직하겠습니다"</div>
+        <div className="flex justify-end lg:pe-20 mt-3">
+          <Button text="Add Message" onClick={openModal} />
+        </div>
+
         {isLoading && <p>Loading...</p>}
         {error && <p>Error: {error.message}</p>}
         <ul className="grid grid-cols-1 md:grid-cols-3 lg-grid-cols-4 gap-4 p-4">
@@ -72,8 +76,6 @@ export default function GuestBook() {
               <MessageCard key={message.id} message={message} />
             ))}
         </ul>
-
-        <Button text="Add Message" onClick={openModal} />
       </section>
     </>
   );

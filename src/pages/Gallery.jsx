@@ -24,7 +24,7 @@ export default function Gallery() {
   const licenseKey = process.env.REACT_APP_LIGHTGALLERY_LICENSE_KEY;
 
   return (
-    <div className="w-full text-center">
+    <div className="w-full text-center px-3 lg:px-10">
       <h2 className="text-2xl font-bold my-2 mt-10">갤러리</h2>
       <div>"저희의 소중한 추억들을 여러분과 공유합니다"</div>
       <LightGallery
