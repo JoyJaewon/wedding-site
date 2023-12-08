@@ -9,6 +9,9 @@ module.exports = {
       backgroundImage: {
         banner: `url("../public/images/banner.jpg")`,
       },
+      fontFamily: {
+        "kopub-batang": ["KoPub Batang", "serif"],
+      },
     },
   },
   plugins: [],

@@ -38,10 +38,10 @@ export default function CountDown() {
       className="flex flex-col items-center justify-center md:p-4 p-2"
       key={interval}
     >
-      <span className="lg:text-6xl text-3xl font-semibold">
+      <span className="lg:text-6xl text-3xl font-medium	text-3">
         {timeLeft[interval].toString().padStart(2, "0")}
       </span>
-      <span className=" md:text-lg font-semibold uppercase text-base">
+      <span className=" md:text-lg font-normal text-5 text-base">
         {interval}
       </span>
     </div>
@@ -49,8 +49,11 @@ export default function CountDown() {
 
   return (
     <div className="flex flex-col items-center justify-center mt-5">
-      <h1 className="text-2xl font-semibold mb-4 mt-16">{t("fullDate")}</h1>
-      <div className="flex items-center space-x-4 mb-10">{timerComponents}</div>
+      <h1 className=" mb-4 mt-16 text-2xl	text-5 ">D - DAY</h1>
+      <h1 className="text-4xl font-light text-beigeC ">2024.01.13</h1>
+      <div className="flex items-center space-x-4 lg:mt-16 mt-10 mb-10">
+        {timerComponents}
+      </div>
     </div>
   );
 }
