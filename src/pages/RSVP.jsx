@@ -9,7 +9,9 @@ export default function RSVP() {
           <img src="/images/date2.png" alt="date" className="w-full" />
         </div>
         <div className="ms-10 text-center p-5 md:w-1/3 mt-3">
-          <div className="text-2xl font-bold">When & Where</div>
+          <div className="text-4xl font-light my-2 mt-24 text-3">
+            When & Where
+          </div>
           <div>
             January 13, 2024 <br />
             6:30pm

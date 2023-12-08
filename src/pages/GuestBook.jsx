@@ -6,10 +6,9 @@ import { addMessage, getMessages } from "../api/firebase";
 import MessageCard from "../components/MessageCard";
 import { useTranslation } from "react-i18next";
 
-
 export default function GuestBook() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const {t}=useTranslation();
+  const { t } = useTranslation();
   const {
     isLoading,
     error,
@@ -28,12 +27,17 @@ export default function GuestBook() {
         <textarea id="swal-input3" class="swal2-textarea" placeholder="메세지"></textarea>
       `,
       confirmButtonText: "메세지 업로드",
+      confirmButtonClass: "main-button",
       focusConfirm: false,
       preConfirm: () => {
         const name = document.getElementById("swal-input1").value;
         const password = document.getElementById("swal-input2").value;
         const message = document.getElementById("swal-input3").value;
         return { name, password, message };
+      },
+      didOpen: () => {
+        Swal.getConfirmButton().style.backgroundColor = "#beb19d";
+        Swal.getConfirmButton().style.color = "white";
       },
     }).then((result) => {
       if (result.value) {
@@ -64,8 +68,10 @@ export default function GuestBook() {
   return (
     <div className="w-full text-center px-3 lg:px-10">
       <section>
-        <h2 className="text-2xl font-bold my-2 mt-10">{t("GuestBook")}</h2>
-        <div>"{t("guestbook-sub")}"</div>
+        <div className="text-4xl font-light my-2 mt-24 text-3">
+          {t("GuestBook")}
+        </div>
+        <div className="text-lg text-5 mb-10">"{t("guestbook-sub")}"</div>
         <div className="flex justify-end lg:pe-20 mt-3">
           <Button text="Add Message" onClick={openModal} />
         </div>

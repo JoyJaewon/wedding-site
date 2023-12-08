@@ -86,8 +86,7 @@ input {
   background-color: #d6cec2;
   color: #333333;
 }
-
-.groom-bride {
+m-bride {
   background-color: #f5f3f0;
 }
 
@@ -107,6 +106,9 @@ input {
 .text-beigeC {
   color: #beb19d;
 }
+.bg-beigeC {
+  background-color: #beb19d;
+}
 
 .home-message {
   font-weight: 300;
@@ -119,4 +121,9 @@ input {
     font-size: 15px;
     line-height: 35px;
   }
+}
+
+.main-button {
+  background-color: #beb19d !important;
+  color: white;
 }

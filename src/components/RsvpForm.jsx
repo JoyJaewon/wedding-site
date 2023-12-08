@@ -24,7 +24,9 @@ export default function RsvpForm() {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Will You Attend?</h2>
+      <h2 className="text-4xl font-light my-2 mt-24 text-3 mb-4">
+        Will You Attend?
+      </h2>
       <div className="text-center mb-4">
         <a
           href="/menu.pdf"
@@ -84,7 +86,7 @@ export default function RsvpForm() {
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="entree"
           >
-             {t("Entree")}
+            {t("Entree")}
           </label>
           <select
             {...register("entree", { required: true })}
@@ -149,7 +151,7 @@ export default function RsvpForm() {
 
         <div className="flex justify-center">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded focus:outline-none focus:shadow-outline"
+            className="bg-beigeC text-white font-bold py-2 px-52  hover:brightness-110 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Submit

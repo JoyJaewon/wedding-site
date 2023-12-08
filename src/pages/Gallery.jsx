@@ -9,7 +9,6 @@ import "lightgallery/css/lg-thumbnail.css";
 import "lightgallery/css/lg-zoom.css";
 import { useTranslation } from "react-i18next";
 
-
 export default function Gallery() {
   const { t } = useTranslation();
   const {
@@ -28,8 +27,10 @@ export default function Gallery() {
 
   return (
     <div className="w-full text-center px-3 lg:px-10">
-      <h2 className="text-2xl font-bold my-2 mt-10">{t("Gallery")}</h2>
-      <div>" {t("gallery-sub")}"</div>
+      <div className="text-4xl font-light my-2 mt-24 text-3">
+        {t("Gallery")}
+      </div>
+      <div className="text-lg text-5 mb-10">" {t("gallery-sub")}"</div>
       <LightGallery
         plugins={[lgThumbnail, lgZoom]}
         mode="lg-fade"
