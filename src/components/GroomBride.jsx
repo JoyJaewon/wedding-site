@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import "./../Animation.css";
 
 export default function GroomBride() {
   const { t } = useTranslation();
   const [brideImage, setBrideImage] = useState("/images/bride.jpg");
   const [groomImage, setGroomImage] = useState("/images/groom.jpg");
+  /*
   const changeBrideImage = () => {
     setBrideImage(
       brideImage === "/images/bride.jpg"
@@ -16,6 +18,23 @@ export default function GroomBride() {
     setGroomImage(
       groomImage === "/images/groom.jpg" ? "" : "/images/groom.jpg"
     );
+  };
+*/
+
+  const handleMouseEnterB = () => {
+    setBrideImage("/images/jaewon-child3.jpg");
+  };
+
+  const handleMouseLeaveB = () => {
+    setBrideImage("/images/bride.jpg");
+  };
+
+  const handleMouseEnterG = () => {
+    setGroomImage("/images/jun-child.jpg");
+  };
+
+  const handleMouseLeaveG = () => {
+    setGroomImage("/images/groom.jpg");
   };
 
   return (
@@ -31,14 +50,16 @@ export default function GroomBride() {
         <img
           src={groomImage}
           alt="Junyong"
-          // onClick={changeGroomImage}
+          onMouseEnter={handleMouseEnterG}
+          onMouseLeave={handleMouseLeaveG}
           className="rounded-full lg:w-1/5 w-1/4 h-1/4 shadow-lg cursor-pointer transition-all hover:scale-105"
         />
         <img
           src={brideImage}
           alt="Jaewon"
-          onClick={changeBrideImage}
-          className="rounded-full lg:w-1/5 w-1/4 h-1/4 shadow-lg cursor-pointer transition-all hover:scale-105"
+          onMouseEnter={handleMouseEnterB}
+          onMouseLeave={handleMouseLeaveB}
+          className="rounded-full lg:w-1/5 w-1/4 h-1/4 shadow-lg cursor-pointer transition-all hover:scale-105 duration-300"
         />
       </div>
       <div className="flex lg:justify-around justify-between mt-10 lg:w-2/3 w-3/6">

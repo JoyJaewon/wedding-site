@@ -4,11 +4,11 @@ import RsvpForm from "../components/RsvpForm";
 export default function RSVP() {
   return (
     <>
-      <section className="md:flex justify-around p-5">
-        <div>
-          <img src="/images/date.jpg" alt="date" className="md:w-96 w-full" />
+      <section className="md:flex justify-center p-5">
+        <div className="animate-wiggle">
+          <img src="/images/date2.png" alt="date" className="w-full" />
         </div>
-        <div className="ms-10 text-center p-5 md:w-1/2 mt-3">
+        <div className="ms-10 text-center p-5 md:w-1/3 mt-3">
           <div className="text-2xl font-bold">When & Where</div>
           <div>
             January 13, 2024 <br />
