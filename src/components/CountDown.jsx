@@ -32,16 +32,6 @@ export default function CountDown() {
     }, 1000);
     return () => clearTimeout(timer);
   });
-  const [brideImage, setBrideImage] = useState("/images/bride.jpg"); 
-  const [groomImage, setGroomImage] = useState("/images/groom.jpg");
-
-
-  const changeBrideImage = () => {
-    setBrideImage(brideImage === "/images/bride.jpg" ? "/images/jaewon-child3.jpg" : "/images/bride.jpg");
-  };
-  const changeGroomImage = () => {
-    setGroomImage(groomImage === "/images/groom.jpg" ? "" : "/images/groom.jpg");
-  };
 
   const timerComponents = Object.keys(timeLeft).map((interval) => (
     <div
@@ -59,37 +49,6 @@ export default function CountDown() {
 
   return (
     <div className="flex flex-col items-center justify-center mt-5">
-      <div className="text-center mt-16 text-lg p-4">
-        <h5>{t("home-message1")}</h5>
-        <h5>{t("home-message2")}</h5>
-        <h5>{t("home-message3")}</h5>
-        <h5>{t("home-message4")}</h5>
-        <h5>{t("home-message5")}</h5>
-      </div>
-      <div className="flex justify-center gap-28 lg:gap-52 mt-16">
-        <img
-          src={groomImage}
-          alt="Junyong"
-         // onClick={changeGroomImage}
-          className="rounded-full lg:w-1/5 w-1/4 h-1/4 shadow-lg cursor-pointer transition-all hover:scale-105"
-        />
-        <img
-           src={brideImage}
-          alt="Jaewon"
-          onClick={changeBrideImage}
-          className="rounded-full lg:w-1/5 w-1/4 h-1/4 shadow-lg cursor-pointer transition-all hover:scale-105"
-        />
-      </div>
-      <div className="flex lg:justify-around justify-between mt-10 lg:w-2/3 w-3/6">
-        <div className="text-center">
-          <div className="text-2xl font-semibold">{t("groom")}</div>
-          <div className="text-lg">{t("JunyongKim")}</div>
-        </div>
-        <div className="text-center">
-          <div className="text-2xl font-semibold">{t("bride")}</div>
-          <div className="text-lg">{t("JaewonHan")}</div>
-        </div>
-      </div>
       <h1 className="text-2xl font-semibold mb-4 mt-16">{t("fullDate")}</h1>
       <div className="flex items-center space-x-4 mb-10">{timerComponents}</div>
     </div>
