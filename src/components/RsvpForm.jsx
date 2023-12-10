@@ -38,7 +38,10 @@ export default function RsvpForm() {
           {t("viewMenu")}
         </a>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 px-20">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-4 md:px-20 px-5"
+      >
         <div className="mb-4">
           <input
             {...register("name", { required: true })}

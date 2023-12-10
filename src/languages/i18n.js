@@ -3,33 +3,30 @@ import { initReactI18next } from "react-i18next";
 import { en } from "./en";
 import { ko } from "./ko";
 
-
-i18n
-  .use(initReactI18next)
-  .init({
-    resources: {
-      en: {
-        translation: en,
-      },
-      ko: {
-        translation: ko,
-      },
+i18n.use(initReactI18next).init({
+  resources: {
+    en: {
+      translation: en,
     },
-    lng: "ko-KR",
-    fallbackLng: {
-      "ko-KR": ["ko-KR"],
-      default: ["en-US"],
+    ko: {
+      translation: ko,
     },
-    debug: true,
-    defaultNS: "translation",
-    ns: "translation",
-    keySeparator: false,
-    interpolation: {
-      escapeValue: false,
-    },
-    react: {
-      useSuspense: false,
-    },
-  });
+  },
+  lng: "ko-KR",
+  fallbackLng: {
+    "ko-KR": ["ko-KR"],
+    default: ["en-US"],
+  },
+  debug: false,
+  defaultNS: "translation",
+  ns: "translation",
+  keySeparator: false,
+  interpolation: {
+    escapeValue: false,
+  },
+  react: {
+    useSuspense: false,
+  },
+});
 
 export default i18n;
