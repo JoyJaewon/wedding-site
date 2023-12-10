@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { addRsvp } from "../api/firebase";
 import { useTranslation } from "react-i18next";
+import HeartIcon from "../icon/HeartIcon";
 
 export default function RsvpForm() {
   const { t } = useTranslation();
@@ -24,7 +25,7 @@ export default function RsvpForm() {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-4xl font-light my-2 mt-24 text-3 mb-4">
+      <h2 className="text-4xl font-light my-2 mt-24 text-center text-3 mb-4">
         Will You Attend?
       </h2>
       <div className="text-center mb-4">
@@ -32,25 +33,19 @@ export default function RsvpForm() {
           href="/menu.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 hover:text-blue-700 text-sm font-bold"
+          className="text-beigeC hover:text-orange-950 text-sm font-bold"
         >
           {t("viewMenu")}
         </a>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 px-20">
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="name"
-          >
-            {t("name")}
-          </label>
           <input
             {...register("name", { required: true })}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-8 leading-tight focus:outline-none focus:shadow-outline"
             id="name"
             type="text"
-            placeholder="Your name"
+            placeholder={t("name")}
           />
           {errors.name && (
             <span className="text-red-500 text-xs">Name is required</span>
@@ -58,18 +53,12 @@ export default function RsvpForm() {
         </div>
 
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="soupSalad"
-          >
-            {t("soup+salad")}
-          </label>
           <select
             {...register("soupSalad", { required: true })}
-            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-2 px-3 text-8 leading-tight focus:outline-none focus:shadow-outline"
             id="soupSalad"
           >
-            <option value="">Select an option</option>
+            <option value="">{t("soup+salad")}</option>
             <option value="smokedCornChowder">SMOKED CORN CHOWDER</option>
             <option value="romaine">ROMAINE</option>
             <option value="choppedSalad">CHOPPED SALAD</option>
@@ -82,18 +71,12 @@ export default function RsvpForm() {
         </div>
 
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="entree"
-          >
-            {t("Entree")}
-          </label>
           <select
             {...register("entree", { required: true })}
-            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-2 px-3 text-8 leading-tight focus:outline-none focus:shadow-outline"
             id="entree"
           >
-            <option value="">Select an option</option>
+            <option value="">{t("Entree")}</option>
             <option value="ribeye">19 OZ RIBEYE</option>
             <option value="kingSalmon">SEASONAL KING SALMON</option>
             <option value="freeRangeChicken">FREE-RANGE HALF CHICKEN</option>
@@ -107,18 +90,12 @@ export default function RsvpForm() {
         </div>
 
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="dessert"
-          >
-            {t("Dessert")}
-          </label>
           <select
             {...register("dessert", { required: true })}
-            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full py-2 px-3 text-8 leading-tight focus:outline-none focus:shadow-outline"
             id="dessert"
           >
-            <option value="">Select an option</option>
+            <option value="">{t("Dessert")}</option>
             <option value="valrhonaChocolate">
               VALRHONA CHOCOLATE 3 -WAYS
             </option>
@@ -135,33 +112,29 @@ export default function RsvpForm() {
         </div>
 
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="notes"
-          >
-            {t("Notes")}
-          </label>
           <textarea
             {...register("notes")}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-8 leading-tight focus:outline-none focus:shadow-outline"
             id="notes"
-            placeholder="Any special requests?"
+            placeholder={t("Notes")}
           />
         </div>
 
         <div className="flex justify-center">
           <button
-            className="bg-beigeC text-white font-bold py-2 px-52  hover:brightness-110 rounded focus:outline-none focus:shadow-outline"
+            className="bg-beigeC text-white font-bold py-2 lg:px-80 md:px-72 px-32 hover:brightness-110 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Submit
           </button>
         </div>
-        <h5 className="text-center">
-          {t("rsvp-message1")}
-          <br />
-          {t("rsvp-message2")}
-        </h5>
+        <div className="text-center">
+          <div className="text-base text-7">{t("rsvp-message1")}</div>
+          <div className="flex justify-center mt-20">
+            <HeartIcon />
+          </div>
+          <div className="mt-3 mb-10 text-3">See you on Jan 13, 2024</div>
+        </div>
       </form>
     </div>
   );

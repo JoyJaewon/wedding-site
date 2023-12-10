@@ -25,13 +25,15 @@ export default function RSVP() {
             <br />
             Dallas, TX, 75207
           </div>
-          <div>
-            <iframe
-              className="w-full h-80 mt-7"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.715896007974!2d-96.83214802368903!3d32.799791582820596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e9954911d2a13%3A0xefc78da68b7a782a!2sS%C4%92R%20Steak%20%2B%20Spirits!5e0!3m2!1sen!2sus!4v1701752339336!5m2!1sen!2sus"
-              loading="lazy"
-            ></iframe>
-          </div>
+        </div>
+      </section>
+      <section>
+        <div className="lg:p-24 md:p-16 p-3">
+          <iframe
+            className="w-full md:px-40 h-96"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.715896007974!2d-96.83214802368903!3d32.799791582820596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e9954911d2a13%3A0xefc78da68b7a782a!2sS%C4%92R%20Steak%20%2B%20Spirits!5e0!3m2!1sen!2sus!4v1701752339336!5m2!1sen!2sus"
+            loading="lazy"
+          ></iframe>
         </div>
       </section>
       <RsvpForm />
