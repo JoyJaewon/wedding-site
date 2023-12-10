@@ -49,7 +49,7 @@ export default function Navbar() {
           <Link to="/rsvp" className={getLinkClass("/rsvp")}>
             {t("RSVP")}
           </Link>
-          <div className="ps-10 hover:font-medium flex justify-center">
+          <div className="ps-10 hover:font-medium flex justify-center md:mt-0 mt-3 pr-8">
             <LanguageToggle />
           </div>
         </nav>

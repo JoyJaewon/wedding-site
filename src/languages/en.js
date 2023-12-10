@@ -15,13 +15,11 @@ export const en = {
 
   //Home
   "We are getting married": "We are getting married!",
-  "home-message1": "As we've nurtured our love face to face,",
+  "home-message1": "As we've grown our love side by side, ",
   "home-message2":
-    "We're now ready to walk side by side towards a shared future.",
-  "home-message3":
-    "We're growing our love into something even greater, step by step",
-  "home-message4":
-    "Your blessings on our path ahead will be cherished and held close to our hearts.",
+    "We now look forward to building a stronger, shared future together.",
+  "home-message3": "We'd be deeply thankful for your blessings",
+  "home-message4": "as we embark on this journey of love and commitment.",
   "home-message5": "",
 
   //Gallery
