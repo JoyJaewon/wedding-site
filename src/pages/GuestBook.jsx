@@ -22,9 +22,9 @@ export default function GuestBook() {
     Swal.fire({
       title: "메세지 남기기",
       html: `
-        <input id="swal-input1" class="swal2-input" placeholder="이름" type="text">
+        <input id="swal-input1" class="swal2-input" placeholder="이름" type="text" required>
         <input id="swal-input2" class="swal2-input" placeholder="비밀번호" type="password">
-        <textarea id="swal-input3" class="swal2-textarea" placeholder="메세지"></textarea>
+        <textarea id="swal-input3" class="swal2-textarea" placeholder="메세지" required></textarea>
       `,
       confirmButtonText: "메세지 업로드",
       confirmButtonClass: "main-button",
@@ -33,6 +33,10 @@ export default function GuestBook() {
         const name = document.getElementById("swal-input1").value;
         const password = document.getElementById("swal-input2").value;
         const message = document.getElementById("swal-input3").value;
+        if (!name || !message) {
+          Swal.showValidationMessage(t("message-required"));
+          return false;
+        }
         return { name, password, message };
       },
       didOpen: () => {

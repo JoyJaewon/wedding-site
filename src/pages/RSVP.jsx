@@ -13,6 +13,7 @@ export default function RSVP() {
         <div className="animate-wiggle">
           <img src="/images/date2.png" alt="date" className="w-full" />
         </div>
+        {/* 
         <div className="ms-10 text-center p-5 md:w-1/3 mt-3">
           <div className="text-4xl font-light my-2 mt-16 text-3">
             When & Where
@@ -31,7 +32,9 @@ export default function RSVP() {
             Dallas, TX, 75207
           </div>
         </div>
+        */}
       </section>
+      {/** 
       <section>
         <div className="lg:p-24 md:p-16 p-3">
           <iframe
@@ -41,6 +44,7 @@ export default function RSVP() {
           ></iframe>
         </div>
       </section>
+      */}
       <RsvpForm />
     </>
   );

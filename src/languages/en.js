@@ -32,6 +32,7 @@ export const en = {
   password: "Password",
   message: "Message",
   submit: "Submit",
+  "message-required": "Name and Message are required.",
 
   //RSVP
   "rsvp-family": "This ceremony will be a family-only event",
