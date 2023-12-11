@@ -6,7 +6,9 @@ export default function RSVP() {
   const { t } = useTranslation();
   return (
     <>
-      <div className="mt-20 text-sm text-center">{t("rsvp-family")}</div>
+      <div className="mt-20 md:text-lg text-5 text-sm font-semibold text-center">
+        {t("rsvp-family")}
+      </div>
       <section className="md:flex justify-center p-5">
         <div className="animate-wiggle">
           <img src="/images/date2.png" alt="date" className="w-full" />
