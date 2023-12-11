@@ -11,20 +11,28 @@ export default function MessageCard({ message }) {
     password: originalPassword,
   } = message;
 
-  const updateMessageDetails = ({ name, message, password }) => {
-    updateMessage(id, { name, message, password, submittedAt })
+  const updateMessageDetails = (updatedMessage) => {
+    const { id, ...data } = updatedMessage;
+  
+    if (!data.submittedAt) {
+      data.submittedAt = message.submittedAt;
+    }
+    if (!data.id) {
+      data.id = message.id;
+    }
+    updateMessage(id, data)
       .then(() => {
-        Swal.fire("Success", "Message updated successfully", "success").then(
-          () => {
-            window.location.reload();
-          }
-        );
+        Swal.fire("Success", "Message updated successfully", "success").then(() => {
+          window.location.reload();
+        });
       })
       .catch((error) => {
         console.error("Failed to update message:", error);
         Swal.fire("Error", "Failed to update message", "error");
       });
   };
+  
+  
 
   const showMessageModal = () => {
     Swal.fire({
@@ -33,14 +41,13 @@ export default function MessageCard({ message }) {
         <p>${messageText}</p>
         <p><small>${submittedAt}</small></p>
       `,
-      /*
-      showCancelButton: false,
+      
+      showCancelButton: true,
       confirmButtonText: "Edit",
       cancelButtonText: "Cancel",
       showDenyButton: false,
       denyButtonText: "Delete",
-      */
-      /*
+
       preConfirm: () => {
         return Swal.fire({
           title: "Enter your password to edit",
@@ -68,8 +75,10 @@ export default function MessageCard({ message }) {
               preConfirm: () => {
                 const newName = document.getElementById("swal-input1").value;
                 const newMessage = document.getElementById("swal-input3").value;
-                return { name: newName, message: newMessage, password };
+                return { name: newName, message: newMessage, password: originalPassword, id, submittedAt: message.submittedAt };
               },
+              
+              
               showLoaderOnConfirm: true,
             }).then((editResult) => {
               if (editResult.value) {
@@ -116,7 +125,7 @@ export default function MessageCard({ message }) {
             console.error("Error deleting message:", error);
             Swal.fire("Error", "Failed to delete message", "error");
           });
-      },*/
+      },
     });
   };
 
