@@ -4,14 +4,17 @@ import { useTranslation } from "react-i18next";
 export default function CountDown() {
   const { t } = useTranslation();
   const calculateTimeLeft = () => {
-    const difference = +new Date("2024-01-13") - +new Date();
+    const now = new Date();
+    const targetDate = new Date("2024-01-13T00:00:00");
+    const difference = targetDate - now;
+  
     let timeLeft = {
       days: 0,
       hours: 0,
       minutes: 0,
       seconds: 0,
     };
-
+  
     if (difference > 0) {
       timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -20,9 +23,10 @@ export default function CountDown() {
         seconds: Math.floor((difference / 1000) % 60),
       };
     }
-
+  
     return timeLeft;
   };
+  
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
