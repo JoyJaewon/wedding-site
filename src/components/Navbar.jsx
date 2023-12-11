@@ -27,7 +27,7 @@ export default function Navbar() {
           </div>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-xl hover:text-stone-950 sm:hidden"
+            className="text-xl hover:text-stone-950 px-2 sm:hidden"
           >
             {isOpen ? "X" : "☰"}
           </button>

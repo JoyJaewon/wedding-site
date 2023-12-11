@@ -20,13 +20,13 @@ export default function GuestBook() {
 
   const openModal = () => {
     Swal.fire({
-      title: "메세지 남기기",
+      title:  t("add-message"),
       html: `
-        <input id="swal-input1" class="swal2-input" placeholder="이름" type="text" required>
-        <input id="swal-input2" class="swal2-input" placeholder="비밀번호" type="password">
-        <textarea id="swal-input3" class="swal2-textarea" placeholder="메세지" required></textarea>
+        <input id="swal-input1" class="swal2-input w-2/3" placeholder="${t("name")}" type="text">
+        <input id="swal-input2" class="swal2-input w-2/3" placeholder="${t("password")}" type="password">
+        <textarea id="swal-input3" class="swal2-textarea w-2/3" placeholder="${t("message")}"></textarea>
       `,
-      confirmButtonText: "메세지 업로드",
+      confirmButtonText: t("submit"),
       confirmButtonClass: "main-button",
       focusConfirm: false,
       preConfirm: () => {

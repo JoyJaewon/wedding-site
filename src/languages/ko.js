@@ -30,7 +30,7 @@ export const ko = {
   name: "이름",
   password: "비밀번호",
   message: "메세지",
-  submit: "제출하기",
+  submit: "등록하기",
   "message-required": "이름과 메세지를 입력해주세요",
 
   //RSVP
