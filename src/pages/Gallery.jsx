@@ -54,6 +54,12 @@ export default function Gallery() {
           </a>
         ))}
       </LightGallery>
+      <p className="text-center mx-auto md:text-base text-sm my-3 mt-5 md:mt-20 text-gray-500">
+        Special thanks to&nbsp; 
+        <a href="https://www.anniekangphotography.com" className="font-medium underline underline-offset-4" target="_blank" rel="noopener noreferrer">
+          Annie Kang Photography
+        </a>
+      </p>
     </div>
   );
 }
