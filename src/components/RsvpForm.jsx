@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { addRsvp } from "../api/firebase";
 import { useTranslation } from "react-i18next";
@@ -6,10 +6,11 @@ import HeartIcon from "../icon/HeartIcon";
 
 export default function RsvpForm() {
   const { t } = useTranslation();
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const {
     register,
     handleSubmit,
+    reset, // This method will be used to reset the form fields
     formState: { errors },
   } = useForm();
 
@@ -18,10 +19,19 @@ export default function RsvpForm() {
       await addRsvp(data);
       console.log(data);
       console.log("RSVP submitted successfully");
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        reset();
+      }, 1000);
     } catch (error) {
       console.error("Error submitting RSVP:", error);
     }
   };
+
+  const submissionMessage = isSubmitted ? (
+    <p className="text-center text-green-500">RSVP submitted successfully!</p>
+  ) : null;
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
@@ -38,6 +48,7 @@ export default function RsvpForm() {
           {t("viewMenu")}
         </a>
       </div>
+      {submissionMessage}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-4 md:px-20 px-5"

@@ -26,7 +26,7 @@ export const en = {
   "gallery-sub": "❤️",
 
   //Guest Book
-  "guestbook-sub": "❤️",
+  "guestbook-sub": "Please leave us a message of love and celebration❤️",
   "add-message": "Add Message",
   name: "Name",
   password: "Password",

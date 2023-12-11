@@ -71,7 +71,9 @@ export default function GuestBook() {
         <div className="text-4xl font-light my-2 mt-24 text-3">
           {t("GuestBook")}
         </div>
-        <div className="text-lg text-5 mb-10">"{t("guestbook-sub")}"</div>
+        <div className="md:text-lg text-sm text-5 mb-10">
+          {t("guestbook-sub")}
+        </div>
         <div className="flex justify-end lg:pe-20 mt-3">
           <Button text="Add Message" onClick={openModal} />
         </div>
