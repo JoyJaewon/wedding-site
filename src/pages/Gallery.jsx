@@ -30,7 +30,7 @@ export default function Gallery() {
       <div className="text-4xl font-light my-2 mt-24 text-3">
         {t("Gallery")}
       </div>
-      <div className="text-lg text-5 mb-10">{t("gallery-sub")}</div>
+      <div className="md:text-lg text-sm text-5 mb-10">{t("gallery-sub")}</div>
       <LightGallery
         plugins={[lgThumbnail, lgZoom]}
         mode="lg-fade"

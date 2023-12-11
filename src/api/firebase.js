@@ -58,11 +58,26 @@ export async function addMessage({ name, message, password }) {
     submittedAt: timestamp,
   });
 }
-
+/*
+function formatTimestamp(timestamp) {
+  const date = new Date(timestamp);
+  const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+  return new Intl.DateTimeFormat("ko-KR", options).format(date);
+}
+*/
 export async function getMessages() {
   return get(ref(database, "messages")).then((snapshot) => {
     if (snapshot.exists()) {
       return Object.values(snapshot.val());
+      /*
+      return Object.values(snapshot.val()).map((message) => {
+        if (message.submittedAt) {
+          message.submittedAt = formatTimestamp(message.submittedAt);
+        }
+        return message;
+      });
+    } else {
+      return [];*/
     }
     return [];
   });

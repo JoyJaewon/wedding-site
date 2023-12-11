@@ -20,20 +20,26 @@ export default function GuestBook() {
 
   const openModal = () => {
     Swal.fire({
-      title:  t("add-message"),
+      title: t("add-message"),
       html: `
-        <input id="swal-input1" class="swal2-input w-2/3" placeholder="${t("name")}" type="text">
-        <input id="swal-input2" class="swal2-input w-2/3" placeholder="${t("password")}" type="password">
-        <textarea id="swal-input3" class="swal2-textarea w-2/3" placeholder="${t("message")}"></textarea>
+        <input id="swal-input1" class="swal2-input w-2/3" placeholder="${t(
+          "name"
+        )}" type="text">
+        <input id="swal-input2" class="swal2-input w-2/3" placeholder="${t(
+          "password"
+        )}" type="password">
+        <textarea id="swal-input3" class="swal2-textarea w-2/3" placeholder="${t(
+          "message"
+        )}"></textarea>
       `,
       confirmButtonText: t("submit"),
-      confirmButtonClass: "main-button",
+      //confirmButtonClass: "main-button",
       focusConfirm: false,
       preConfirm: () => {
         const name = document.getElementById("swal-input1").value;
         const password = document.getElementById("swal-input2").value;
         const message = document.getElementById("swal-input3").value;
-        if (!name || !message) {
+        if (!name || !message || !password) {
           Swal.showValidationMessage(t("message-required"));
           return false;
         }

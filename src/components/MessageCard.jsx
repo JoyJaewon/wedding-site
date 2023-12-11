@@ -13,7 +13,7 @@ export default function MessageCard({ message }) {
 
   const updateMessageDetails = (updatedMessage) => {
     const { id, ...data } = updatedMessage;
-  
+
     if (!data.submittedAt) {
       data.submittedAt = message.submittedAt;
     }
@@ -22,26 +22,25 @@ export default function MessageCard({ message }) {
     }
     updateMessage(id, data)
       .then(() => {
-        Swal.fire("Success", "Message updated successfully", "success").then(() => {
-          window.location.reload();
-        });
+        Swal.fire("Success", "Message updated successfully", "success").then(
+          () => {
+            window.location.reload();
+          }
+        );
       })
       .catch((error) => {
         console.error("Failed to update message:", error);
         Swal.fire("Error", "Failed to update message", "error");
       });
   };
-  
-  
 
   const showMessageModal = () => {
     Swal.fire({
       title: name,
       html: `
         <p>${messageText}</p>
-        <p><small>${submittedAt}</small></p>
       `,
-      
+
       showCancelButton: true,
       confirmButtonText: "Edit",
       cancelButtonText: "Cancel",
@@ -68,17 +67,22 @@ export default function MessageCard({ message }) {
             return Swal.fire({
               title: "Edit Message",
               html: `
-                <input id="swal-input1" class="swal2-input" value="${name}" type="text">
-                <textarea id="swal-input3" class="swal2-textarea">${messageText}</textarea>
+                <input id="swal-input1" class="swal2-input w-2/3" value="${name}" type="text">
+                <textarea id="swal-input3" class="swal2-textarea w-2/3">${messageText}</textarea>
               `,
               confirmButtonText: "Update Message",
               preConfirm: () => {
                 const newName = document.getElementById("swal-input1").value;
                 const newMessage = document.getElementById("swal-input3").value;
-                return { name: newName, message: newMessage, password: originalPassword, id, submittedAt: message.submittedAt };
+                return {
+                  name: newName,
+                  message: newMessage,
+                  password: originalPassword,
+                  id,
+                  submittedAt: message.submittedAt,
+                };
               },
-              
-              
+
               showLoaderOnConfirm: true,
             }).then((editResult) => {
               if (editResult.value) {

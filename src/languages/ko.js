@@ -31,7 +31,7 @@ export const ko = {
   password: "비밀번호",
   message: "메세지",
   submit: "등록하기",
-  "message-required": "이름과 메세지를 입력해주세요",
+  "message-required": "모든 항목을 입력해주세요",
 
   //RSVP
   "rsvp-family": "본 예식은 가족식으로 진행됩니다",
