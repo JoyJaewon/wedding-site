@@ -35,10 +35,11 @@ const router = createBrowserRouter([
         path: "/rsvp",
         element: <RSVP />,
       },
+      /*
       {
         path: "/upload",
         element: <Upload />,
-      },
+      },*/
     ],
   },
 ]);
